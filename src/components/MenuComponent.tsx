@@ -4,6 +4,7 @@ import { useNavigate, Route, Routes } from "react-router-dom";
 import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
 import Phaser001Component from "./Phaser001Component";
+import Phaser002Component from "./Phaser002Component";
 
 function MenuComponentHook() {
     const navigate = useNavigate();
@@ -17,14 +18,7 @@ function MenuComponentHook() {
                     icon: 'pi pi-fw pi-user',
                     items: [
                         {
-                            label: 'Phaser000',
-                            icon: 'pi pi-fw pi-user',
-                            command: () => {
-                                navigate("/Phaser000");
-                            }
-                        },
-                        {
-                            label: 'Phaser002',
+                            label: 'Phaser001',
                             icon: 'pi pi-fw pi-user',
                             command: () => {
                                 navigate("/Phaser001");
@@ -35,6 +29,13 @@ function MenuComponentHook() {
                             icon: 'pi pi-fw pi-user',
                             command: () => {
                                 navigate("/Phaser002");
+                            }
+                        },
+                        {
+                            label: 'Phaser003',
+                            icon: 'pi pi-fw pi-user',
+                            command: () => {
+                                navigate("/Phaser003");
                             }
                         },
                     ]
@@ -53,9 +54,9 @@ function MenuComponentHook() {
         <div className="card">
             <Menubar model={items} start={start} end={end} />
             <Routes>
-                <Route path="/Phaser000" element={<Phaser001Component />} />
                 <Route path="/Phaser001" element={<Phaser001Component />} />
-                <Route path="/Phaser002" element={<Phaser001Component />} />
+                <Route path="/Phaser002" element={<Phaser002Component />} />
+                <Route path="/Phaser003" element={<Phaser001Component />} />
                 <Route path="*" element={<Phaser001Component />} />
             </Routes>
         </div>
