@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-react-app/static/css/main.c73b0f59.css",
-    "main.js": "/my-react-app/static/js/main.9a25b0b9.js",
+    "main.js": "/my-react-app/static/js/main.022385ed.js",
     "static/js/787.bc7d429a.chunk.js": "/my-react-app/static/js/787.bc7d429a.chunk.js",
     "static/media/primeicons.svg": "/my-react-app/static/media/primeicons.e1441b135b3ca9ad643c.svg",
     "static/media/primeicons.eot": "/my-react-app/static/media/primeicons.d44157bdfa026dc877af.eot",
@@ -10,11 +10,11 @@
     "static/media/primeicons.woff2": "/my-react-app/static/media/primeicons.78172950b335ccdb94e2.woff2",
     "index.html": "/my-react-app/index.html",
     "main.c73b0f59.css.map": "/my-react-app/static/css/main.c73b0f59.css.map",
-    "main.9a25b0b9.js.map": "/my-react-app/static/js/main.9a25b0b9.js.map",
+    "main.022385ed.js.map": "/my-react-app/static/js/main.022385ed.js.map",
     "787.bc7d429a.chunk.js.map": "/my-react-app/static/js/787.bc7d429a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c73b0f59.css",
-    "static/js/main.9a25b0b9.js"
+    "static/js/main.022385ed.js"
   ]
 }
