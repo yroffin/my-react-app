@@ -25,7 +25,7 @@ class Phaser001Component extends PhaserCoreComponent {
         //  Store some data about this Gem:
         gem.setDataEnabled();
 
-        gem.data.set('name', 'Red Gem Stone');
+        gem.data.set('name', 'Red Gem Stone 001');
         gem.data.set('level', 2);
         gem.data.set('owner', 'Link');
         gem.data.set('gold', 50);

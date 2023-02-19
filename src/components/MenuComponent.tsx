@@ -5,6 +5,7 @@ import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
 import Phaser001Component from "./Phaser001Component";
 import Phaser002Component from "./Phaser002Component";
+import Phaser003Component from "./Phaser003Component";
 
 function MenuComponentHook() {
     const navigate = useNavigate();
@@ -56,7 +57,7 @@ function MenuComponentHook() {
             <Routes>
                 <Route path="/Phaser001" element={<Phaser001Component />} />
                 <Route path="/Phaser002" element={<Phaser002Component />} />
-                <Route path="/Phaser003" element={<Phaser001Component />} />
+                <Route path="/Phaser003" element={<Phaser003Component />} />
                 <Route path="*" element={<Phaser001Component />} />
             </Routes>
         </div>

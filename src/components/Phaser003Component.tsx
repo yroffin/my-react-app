@@ -1,6 +1,6 @@
 import PhaserCoreComponent from "./PhaserCoreComponent";
 
-class Phaser002Component extends PhaserCoreComponent {
+class Phaser003Component extends PhaserCoreComponent {
 
     constructor(props: {} | Readonly<{}>) {
         super(props);
@@ -25,7 +25,7 @@ class Phaser002Component extends PhaserCoreComponent {
         //  Store some data about this Gem:
         gem.setDataEnabled();
 
-        gem.data.set('name', 'Red Gem Stone 002');
+        gem.data.set('name', 'Red Gem Stone 003');
         gem.data.set('level', 2);
         gem.data.set('owner', 'Link');
         gem.data.set('gold', 50);
@@ -62,4 +62,4 @@ class Phaser002Component extends PhaserCoreComponent {
     }
 }
 
-export default Phaser002Component
+export default Phaser003Component
