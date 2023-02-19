@@ -1,4 +1,3 @@
-import React from "react";
 import PhaserCoreComponent from "./PhaserCoreComponent";
 
 class Phaser001Component extends PhaserCoreComponent {
@@ -7,7 +6,7 @@ class Phaser001Component extends PhaserCoreComponent {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.state = {
-            value: 'Hello, **world**!'
+            value: 'Hello, ***world***!'
         };
     }
 

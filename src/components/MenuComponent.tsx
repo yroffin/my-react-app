@@ -24,7 +24,7 @@ function MenuComponentHook() {
                             }
                         },
                         {
-                            label: 'Phaser001',
+                            label: 'Phaser002',
                             icon: 'pi pi-fw pi-user',
                             command: () => {
                                 navigate("/Phaser001");
