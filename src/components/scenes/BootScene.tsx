@@ -1,31 +1,32 @@
-import PhaserCoreComponent from "./PhaserCoreComponent";
+class BootScene extends Phaser.Scene {
 
-class Phaser002Component extends PhaserCoreComponent {
-
-    constructor(props: {} | Readonly<{}>) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.state = {
-            value: 'Hello, ***world***!'
-        };
+    constructor() {
+        super('BootScene');
     }
 
-    handleChange(e: { target: { value: any; }; }) {
-        this.setState({ value: e.target.value });
+    init() {
+        // Used to prepare data
+        console.log(this)
     }
 
-    override preload(scene: Phaser.Scene) {
-        scene.load.image('gem', 'favicon.ico');
+    preload() {
+        // Used for preloading assets into your scene, such as
+        // • images
+        // • sounds
+        this.load.image('gem', 'favicon.ico');
     }
 
-    override create(scene: Phaser.Scene) {
-        const text = scene.add.text(350, 250, '', { font: '16px Courier', backgroundColor: '#000000' });
-        const gem = scene.add.image(300, 300, 'gem');
+    create(data: any) {
+        // Used to add objects to your game
+        console.log(this)
+
+        const text = this.add.text(350, 250, '', { font: '16px Courier', backgroundColor: '#000000' });
+        const gem = this.add.image(300, 300, 'gem');
 
         //  Store some data about this Gem:
         gem.setDataEnabled();
 
-        gem.data.set('name', 'Red Gem Stone 002');
+        gem.data.set('name', 'Red Gem Stone BootScene');
         gem.data.set('level', 2);
         gem.data.set('owner', 'Link');
         gem.data.set('gold', 50);
@@ -38,7 +39,7 @@ class Phaser002Component extends PhaserCoreComponent {
         ]);
 
         //  Whenever the 'gold' property is updated we call this function AFTER the change has happened:
-        gem.on('changedata-gold', function (gameObject: any, value: any) {
+        gem.on('changedata-gold', (gameObject: any, value: any) => {
             if (value > 500) {
                 gameObject.data.values.gold = 500;
             }
@@ -53,13 +54,14 @@ class Phaser002Component extends PhaserCoreComponent {
         });
 
         //  Change the 'value' property when the mouse is clicked
-        scene.input.on('pointerdown', function () {
+        this.input.on('pointerdown', () => {
             gem.data.values.gold += 100;
         });
     }
 
-    override update(scene: Phaser.Scene) {
+    update(time: any, delta: any) {
+        // Used to update your game. This function runs constantly
     }
 }
 
-export default Phaser002Component
+export default BootScene;

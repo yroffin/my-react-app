@@ -1,5 +1,9 @@
 import React from 'react';
 import * as Phaser from 'phaser';
+import BootScene from './scenes/BootScene';
+import MainScene from './scenes/MainScene';
+import MenuScene from './scenes/MenuScene';
+import { Menubar } from 'primereact/menubar';
 
 
 class PhaserCoreComponent extends React.Component {
@@ -9,24 +13,6 @@ class PhaserCoreComponent extends React.Component {
 
     constructor(props: {} | Readonly<{}>) {
         super(props);
-
-        let scene: Phaser.Types.Scenes.CreateSceneFromObjectConfig = {
-            create: function (this: Phaser.Scene) {
-                let scene: any = this
-                return scene.component.create(this)
-            },
-            preload: function (this: Phaser.Scene) {
-                let scene: any = this
-                return scene.component.preload(this)
-            },
-            update: function (this: Phaser.Scene) {
-                let scene: any = this
-                return scene.component.update(this)
-            },
-            extend: {
-                component: this
-            }
-        }
 
         this.config = {
             type: Phaser.AUTO,
@@ -41,13 +27,18 @@ class PhaserCoreComponent extends React.Component {
             physics: {
                 default: 'matter'
             },
-            scene
+            scene: [
+            ]
         };
 
         this.state = {
             label: "default",
             seconds: 0
         };
+    }
+
+    init(scene: Phaser.Scene) {
+        console.log("Not implemented")
     }
 
     preload(scene: Phaser.Scene) {
@@ -65,6 +56,9 @@ class PhaserCoreComponent extends React.Component {
     componentDidMount() {
         if (!this.game) {
             this.game = new Phaser.Game(this.config);
+            this.game.scene.add('MainScene', MainScene, true)
+            this.game.scene.add('MenuScene', MenuScene, true)
+            this.game.scene.add('BootScene', BootScene, true)
         }
     }
 
@@ -72,8 +66,50 @@ class PhaserCoreComponent extends React.Component {
     }
 
     render() {
+        const items = [
+            {
+                label: 'Phaser',
+                icon: 'pi pi-fw pi-user',
+                items: [
+                    {
+                        label: 'Phaser',
+                        icon: 'pi pi-fw pi-user',
+                        items: [
+                            {
+                                label: 'BootScene',
+                                icon: 'pi pi-fw pi-user',
+                                command: () => {
+                                    this.game.scene.bringToTop("BootScene")
+                                }
+                            },
+                            {
+                                label: 'MenuScene',
+                                icon: 'pi pi-fw pi-user',
+                                command: () => {
+                                    this.game.scene.bringToTop("MenuScene")
+                                }
+                            },
+                            {
+                                label: 'MainScene',
+                                icon: 'pi pi-fw pi-user',
+                                command: () => {
+                                    this.game.scene.bringToTop("MainScene")
+                                }
+                            },
+                        ]
+                    }
+                ]
+            },
+            {
+                label: 'Quit',
+                icon: 'pi pi-fw pi-power-off'
+            }
+        ];
+        const start = <img alt="logo" src="https://primereact.org/images/logo.png" height="40" className="mr-2"></img>;
+
         return (
             <div>
+                <Menubar model={items} start={start} />
                 <div id="phaser-container"></div>
             </div>
         );

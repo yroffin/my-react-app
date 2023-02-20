@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
-import MenuComponent from './components/MenuComponent';
+import { HashRouter } from 'react-router-dom';
+import PhaserCoreComponent from './components/PhaserCoreComponent';
 
 function App() {
   return (
-    <BrowserRouter>
-      <MenuComponent />
-    </BrowserRouter>
+    <HashRouter>
+      <PhaserCoreComponent />
+    </HashRouter>
   );
 }
 
