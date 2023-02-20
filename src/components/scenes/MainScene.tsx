@@ -1,4 +1,5 @@
 class MainScene extends Phaser.Scene {
+    cody!: Phaser.GameObjects.Sprite;
 
     constructor() {
         super('MainScene');
@@ -13,54 +14,92 @@ class MainScene extends Phaser.Scene {
         // Used for preloading assets into your scene, such as
         // • images
         // • sounds
-        this.load.image('gem', 'favicon.ico');
+        this.load.spritesheet({
+            key: 'brawler',
+            url: '/my-react-app/assets/animations/brawler48x48.png',
+            frameConfig: {
+                frameWidth: 48,
+                frameHeight: 48
+            }
+        });
     }
 
     create(data: any) {
         // Used to add objects to your game
-        console.log(this)
+        this.add.image(0, 0, 'brawler', '__BASE').setOrigin(0, 0);
 
-        const text = this.add.text(350, 250, '', { font: '16px Courier', backgroundColor: '#000000' });
-        const gem = this.add.image(300, 300, 'gem');
-
-        //  Store some data about this Gem:
-        gem.setDataEnabled();
-
-        gem.data.set('name', 'Red Gem Stone MainScene');
-        gem.data.set('level', 2);
-        gem.data.set('owner', 'Link');
-        gem.data.set('gold', 50);
-
-        text.setText([
-            'Name: ' + gem.data.get('name'),
-            'Level: ' + gem.data.get('level'),
-            'Value: ' + gem.data.get('gold') + ' gold',
-            'Owner: ' + gem.data.get('owner')
-        ]);
-
-        //  Whenever the 'gold' property is updated we call this function AFTER the change has happened:
-        gem.on('changedata-gold', (gameObject: any, value: any) => {
-            if (value > 500) {
-                gameObject.data.values.gold = 500;
-            }
-            else {
-                text.setText([
-                    'Name: ' + gem.data.get('name'),
-                    'Level: ' + gem.data.get('level'),
-                    'Value: ' + gem.data.get('gold') + ' gold',
-                    'Owner: ' + gem.data.get('owner')
-                ]);
-            }
+        // Animation set
+        this.anims.create({
+            key: 'walk',
+            frames: this.anims.generateFrameNumbers('brawler', { frames: [0, 1, 2, 3] }),
+            frameRate: 8,
+            repeat: -1
         });
 
-        //  Change the 'value' property when the mouse is clicked
-        this.input.on('pointerdown', function () {
-            gem.data.values.gold += 100;
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('brawler', { frames: [5, 6, 7, 8] }),
+            frameRate: 8,
+            repeat: -1
         });
+
+        this.anims.create({
+            key: 'kick',
+            frames: this.anims.generateFrameNumbers('brawler', { frames: [10, 11, 12, 13, 10] }),
+            frameRate: 8,
+            repeat: -1,
+            repeatDelay: 2000
+        });
+
+        this.anims.create({
+            key: 'punch',
+            frames: this.anims.generateFrameNumbers('brawler', { frames: [15, 16, 17, 18, 17, 15] }),
+            frameRate: 8,
+            repeat: -1,
+            repeatDelay: 2000
+        });
+
+        this.anims.create({
+            key: 'jump',
+            frames: this.anims.generateFrameNumbers('brawler', { frames: [20, 21, 22, 23] }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'jumpkick',
+            frames: this.anims.generateFrameNumbers('brawler', { frames: [20, 21, 22, 23, 25, 23, 22, 21] }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'win',
+            frames: this.anims.generateFrameNumbers('brawler', { frames: [30, 31] }),
+            frameRate: 8,
+            repeat: -1,
+            repeatDelay: 2000
+        });
+
+        this.anims.create({
+            key: 'die',
+            frames: this.anims.generateFrameNumbers('brawler', { frames: [35, 36, 37] }),
+            frameRate: 8,
+        });
+
+        const keys = ['walk', 'idle', 'kick', 'punch', 'jump', 'jumpkick', 'win', 'die'];
+
+        this.cody = this.add.sprite(600, 370, '');
+        this.cody.setScale(-1);
+        this.cody.play('walk');
     }
+
+    rotate = 0
 
     update(time: any, delta: any) {
         // Used to update your game. This function runs constantly
+        this.rotate += 0.02
+        this.cody.setRotation(this.rotate)
     }
 }
 

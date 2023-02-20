@@ -18,10 +18,10 @@ class BootScene extends Phaser.Scene {
 
     create(data: any) {
         // Used to add objects to your game
-        console.log(this)
 
         const text = this.add.text(350, 250, '', { font: '16px Courier', backgroundColor: '#000000' });
         const gem = this.add.image(300, 300, 'gem');
+        console.log(gem)
 
         //  Store some data about this Gem:
         gem.setDataEnabled();
